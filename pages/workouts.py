@@ -4,10 +4,9 @@ import requests
 from streamlit_extras.switch_page_button import switch_page
 
 # Main content
-st.title("WORKOUTS")
+st.set_page_config(page_title="Workouts", page_icon="📈")
 
-
-def resize_and_crop(url, target_width=400, target_height=200):
+def resize_and_crop(url, target_width=400, target_height=300):
     # Open the image file
     with Image.open(requests.get(url, stream=True).raw) as img:
         # Calculate the target aspect ratio (2:1)
@@ -41,9 +40,8 @@ def resize_and_crop(url, target_width=400, target_height=200):
 
         return img
 
-
-def workout_container(image_url, header, subheader, duration):
-    with st.container(height=200):
+def workout_container(image_url, header, subheader, duration, key):
+    with st.container(height=280):
         col1, col2 = st.columns(2)
         with col1:
             st.image(resize_and_crop(image_url), use_column_width=True)
@@ -51,16 +49,18 @@ def workout_container(image_url, header, subheader, duration):
             st.header(header)
             st.subheader(subheader)
             st.write(f"⏱️ {duration} mins")
+            do_workout = st.button("Get Started", key=f"{key}_button")
+            if do_workout:
+                switch_page("workout")
 
-# Placeholder for main content
-
+# Define workouts
 workouts = {
     "Push Day": {
         "image": "https://hips.hearstapps.com/hmg-prod/images/man-training-with-dumbbells-royalty-free-image-1690233265.jpg?crop=0.668xw:1.00xh;0.145xw,0&resize=640:*",
         "muscles": "Chest, Triceps",
         "duration": "55"
     },
-        "Push Day 2": {
+    "Push Day 2": {
         "image": "https://hips.hearstapps.com/hmg-prod/images/man-training-with-dumbbells-royalty-free-image-1690233265.jpg?crop=0.668xw:1.00xh;0.145xw,0&resize=640:*",
         "muscles": "Chest, Triceps",
         "duration": "55"
@@ -72,9 +72,8 @@ nav_bar = st.tabs(["To Complete", "Completed"])
 
 # Customize each tab section based on what page you want to display
 with nav_bar[0]:
-    for workout, data in workouts.items():
-            workout_container(data["image"], workout, data["muscles"], data["duration"])
+    for index, (workout, data) in enumerate(workouts.items()):
+        workout_container(data["image"], workout, data["muscles"], data["duration"], key=f"to_complete_{index}")
 
 with nav_bar[1]:
-    for workout, data in workouts.items():
-        workout_container(data["image"], workout, data["muscles"], data["duration"])
+    pass
