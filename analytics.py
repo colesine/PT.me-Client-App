@@ -62,16 +62,27 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Header
-st.markdown("""
-    <div class="header">
-        <h1>PT.me</h1>
-        <div>🔔</div>
-    </div>
-""", unsafe_allow_html=True)
 
-# Analytics section
-st.subheader("Analytics")
+def show_info_popup():
+    st.info("**Color Scheme Explanation:**\n\n"
+            "🟢 **Green (Micro)**: Represent short-term fluctuations, influenced daily by immediate factors. \n \n \n"
+            "🟡 **Yellow (Macro)**: Represents medium-term trends, best observed over weeks to months. Typically reflective of sustained lifestyle habits. \n \n \n"
+            "🔴 **Red (Mega)**: Represents long-term changes or consistent patterns, capturing the overarching direction of a person's health and fitness journey.")
+
+
+
+col1, col2 = st.columns([0.8, 0.2])  # Adjust column width ratio as needed
+
+with col1:
+    st.subheader("Analytics")
+
+with col2:
+    show_info = st.button("ℹ️")
+    
+    
+if show_info:
+    show_info_popup()
+
 
 # Metrics data with last updated timestamps
 metrics = [
