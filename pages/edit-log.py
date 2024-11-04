@@ -8,7 +8,7 @@ st.title("Edit Fitness Metrics")
 
 # Save and Return Button
 if st.button("Save and Return to Logs"):
-    st.switch_page("log.py")
+    st.switch_page("pages/log.py")
 
 # Create 3x3 grid
 col1, col2, col3 = st.columns(3)
