@@ -49,3 +49,5 @@ with col2:
 with col3:
     st.number_input("Intensity Minutes", value=st.session_state.intensity, step=1, key="intensity_input", on_change=lambda: setattr(st.session_state, 'intensity', st.session_state.intensity_input))
 
+from navbar import navbar
+navbar()

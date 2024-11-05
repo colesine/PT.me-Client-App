@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import altair as alt
 
 # Set page config
-st.set_page_config(page_title="Weight Analytics", layout="wide")
+st.set_page_config(page_title="Weight Analytics")
 
 WEIGHT_DATA = {
     '2022': {month: 80 - (month * 0.2) for month in range(1, 13)},

@@ -1,4 +1,5 @@
 import streamlit as st
+from navbar import navbar
 
 # Define a function to create the workout card
 def workout_card(set_number, exercise_name, target_data, rpe):
@@ -75,3 +76,4 @@ if st.button("Mark as Completed", use_container_width=True):
 
 st.session_state["mark_all_completed_flag"] = False
     
+navbar()

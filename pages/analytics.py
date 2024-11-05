@@ -1,10 +1,10 @@
 import streamlit as st
 from datetime import datetime, timedelta
+from navbar import navbar
 
 # Set page config
 st.set_page_config(
     page_title="Analytics",
-    layout="wide",
     initial_sidebar_state="collapsed"
 )
 # Custom CSS for styling
@@ -114,3 +114,4 @@ for metric in metrics:
         # Wrap the card in a link to the weight page
         card_html = f'<a href="weight" style="text-decoration: none;">{card_html}</a>'
     st.markdown(card_html, unsafe_allow_html=True)
+navbar()
