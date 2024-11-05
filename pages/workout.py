@@ -1,5 +1,6 @@
 import streamlit as st
 from navbar import navbar
+from streamlit_extras.switch_page_button import switch_page
 
 # Define a function to create the workout card
 def workout_card(set_number, exercise_name, target_data, rpe):
@@ -13,7 +14,9 @@ def workout_card(set_number, exercise_name, target_data, rpe):
         with header_col2:
             st.write(f"### {exercise_name}")
         with header_col3:
-            st.write("### ➔")  # Arrow icon
+            exercise_info = st.button("### ➔", key=f"{set_number}_button")
+            if exercise_info:
+                switch_page("exercise_description")
 
         st.divider()
         
