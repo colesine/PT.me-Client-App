@@ -90,7 +90,7 @@ metrics = [
     {"name": "Volume", "value": "12,000 kg", "color": "green", "last_updated": datetime.now() - timedelta(hours=2)},
     {"name": "Steps", "value": "8,456", "color": "green", "last_updated": datetime.now() - timedelta(hours=4)},
     {"name": "1 Rep Max", "value": "100 kg", "color": "yellow", "last_updated": datetime.now() - timedelta(hours=6)},
-    {"name": "Progress Photos", "value": "12 photos", "color": "red", "last_updated": datetime.now() - timedelta(hours=8)},
+    {"name": "Progress Photos", "value": "2 photos", "color": "red", "last_updated": datetime.now() - timedelta(hours=8)},
     {"name": "Body Composition", "value": "18% BF", "color": "red", "last_updated": datetime.now() - timedelta(hours=10)}
 ]
 
@@ -113,5 +113,11 @@ for metric in metrics:
     if metric["name"] == "Weight":
         # Wrap the card in a link to the weight page
         card_html = f'<a href="weight" style="text-decoration: none;">{card_html}</a>'
+    
+    if metric["name"] == "Progress Photos":
+    # Wrap the card in a link to the weight page
+        card_html = f'<a href="progress-photos" style="text-decoration: none;">{card_html}</a>'
+    
     st.markdown(card_html, unsafe_allow_html=True)
+    
 navbar()
