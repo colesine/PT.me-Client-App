@@ -1,5 +1,5 @@
 import streamlit as st
-
+from navbar import navbar
 
 st.set_page_config(
     page_title="Hello",
@@ -8,7 +8,6 @@ st.set_page_config(
 
 st.write("# Welcome to Streamlit! 👋")
 
-st.sidebar.success("Select a demo above.")
 
 st.markdown(
     """
@@ -27,3 +26,5 @@ st.markdown(
     - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
 """
 )
+
+navbar()

@@ -2,7 +2,7 @@ import streamlit as st
 import datetime
 
 # Set page config
-st.set_page_config(page_title="Fitness Metrics Dashboard", layout="wide")
+st.set_page_config(page_title="Fitness Metrics Dashboard")
 
 # Add custom CSS
 st.markdown("""
@@ -130,4 +130,5 @@ with col3:
     st.markdown('<p class="metric-subtitle">Intensity Minutes</p>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
     
-
+from navbar import navbar
+navbar()

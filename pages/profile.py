@@ -1,121 +1,52 @@
 import streamlit as st
 from datetime import datetime
+from resize_crop import resize_and_crop
+from navbar import navbar
 
 # Set page config
 st.set_page_config(
     page_title="PT.me Profile",
-    layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS
-st.markdown("""
-    <style>
-/* Force single row for achievements */
-    .achievement-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 20px;
-        overflow-x: auto;
-        padding: 10px 0;
-        margin: 20px 0;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .achievement-item {
-        flex: 0 0 auto;
-        width: 60px;
-        height: 60px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-    }
-    
-    /* Center profile container */
-    .profile-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    /* Profile image styling */
-    .profile-image {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background-color: #f0f0f0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 40px;
-        margin-bottom: 20px;
-    }
-
-    /* Info box styling */
-    .info-box {
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 15px;
-        text-align: center;
-        width: 100%;
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
     }
 </style>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
+# Profile Section
+st.write("# Your Profile")
+with st.container(height=240):
+    col1, col2 = st.columns([1, 2],vertical_alignment="center")
+    with col1:
+        st.image(resize_and_crop("https://img.freepik.com/premium-photo/portrait-photo-chinese-teenage-male-straight-hair_662214-131847.jpg",200,200))
+    with col2:
+        st.write("## Julius Ang")
+        st.write("### Start Date: 11/11/2024")
+        st.write("### Training Mode: Hybrid")
 
-st.markdown("""
-    <div class='profile-container'>
-        <h1>Your Profile</h1>
-    </div>
-    """, unsafe_allow_html=True)
-
-st.markdown("""
-    <div class='profile-image profile-container'>👤</div>
-    <div class='profile-container'>
-        <h2>Julius Ang</h2>
-    </div>
-    """, unsafe_allow_html=True)
-            
-# Profile info box
-st.markdown("""
-    <div class='info-box'>
-        <p><strong>Start Date:</strong> 01/01/2024</p>
-        <p><strong>Training Mode:</strong> On-site</p>
-    </div>
-""", unsafe_allow_html=True)
-st.markdown("</div>", unsafe_allow_html=True)
-
-
-# Achievements section - single row with horizontal scroll if needed
+# Achievements section - single row with horizontal scroll
 st.subheader("My Achievements")
-st.markdown("""
-    <div class='achievement-container'>
-        <div class='achievement-item'>🏆</div>
-        <div class='achievement-item'>🏅</div>
-        <div class='achievement-item'>💪</div>
-        <div class='achievement-item'>🚩</div>
-    </div></br>
-""", unsafe_allow_html=True)
+with st.container():
+    col1, col2, col3, col4 = st.columns(4)
+    for i, col in enumerate([col1, col2, col3, col4], start=1):
+        with col:
+            st.button(f"# 🏆",key=i)
+
 
 # Coach section
 st.subheader("My Coach: Jane Wong")
-coach_col1, coach_col2 = st.columns([2, 3])
-
-
+coach_col1, coach_col2 = st.columns([1, 2])
 with coach_col1:
-    st.markdown("<img src='./assets/coach.jpeg' style='width: 150px; height: 150px;'>", unsafe_allow_html=True)
+    st.image("assets/coach.jpeg", width=220)  # Local image for coach
 with coach_col2:
-    if st.button("Jane Wong"):
-        st.markdown("""
+    st.write("""
         ### Jane Wong
         
         **Specialized in:**
@@ -126,10 +57,8 @@ with coach_col2:
         - Nutrition Specialist
         - Strength & Conditioning Expert
         
-        Jane is a dedicated coach who has helped over 100 clients to date. Having lost weight himself, he understands the challenges and helps clients achieve their goals through personalized programs.
+        Jane is a dedicated coach who has helped over 100 clients to date. Having lost weight herself, she understands the challenges and helps clients achieve their goals through personalized programs.
         """)
-
-st.markdown("</br></br>", unsafe_allow_html=True)
 
 # Stats section
 st.subheader("My Stats")
@@ -142,17 +71,19 @@ with stats_col2:
 with stats_col3:
     st.metric("Body Fat", "15%")
 
-#need to sync up with session state data?
-
-st.markdown("</br></br>", unsafe_allow_html=True)
-
 # Linked devices section
 st.subheader("Linked Devices and Accounts")
-st.markdown("""
-    <div class='achievement-container'>
-        <div class='achievement-item'><img src='assets/apple_health.png'></div>
-        <div class='achievement-item'><img src='assets/fitbit.png'></div>
-        <div class='achievement-item'><img src='assets/google_health.png'></div>
-        <div class='achievement-item'><img src='assets/myfitnesspal.png'></div>
-    </div>
-""", unsafe_allow_html=True)
+linked_devices_container = st.container()
+with linked_devices_container:
+    ld_col1, ld_col2, ld_col3, ld_col4 = st.columns(4)
+    with ld_col1:
+        st.image("assets/apple_health.png", width=60)  # Local image for Apple Health
+    with ld_col2:
+        st.image("assets/fitbit.png", width=60)  # Local image for Fitbit
+    with ld_col3:
+        st.image("assets/google_health.png", width=60)  # Local image for Google Health
+    with ld_col4:
+        st.image("assets/myfitnesspal.png", width=60)  # Local image for MyFitnessPal
+
+
+navbar()
