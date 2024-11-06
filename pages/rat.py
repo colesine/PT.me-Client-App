@@ -12,7 +12,7 @@ if 'rat_state' not in st.session_state:
     st.session_state.rat_state = 1
 
 # Configure the page
-st.set_page_config(page_title="PT.me - Jimmy the Gym Rat", layout="wide")
+st.set_page_config(page_title="PT.me - Jimmy the Gym Rat")
 
 # Custom CSS for styling
 st.markdown("""
@@ -79,10 +79,9 @@ def feed_rat():
         time.sleep(0.5)
 
 # Center the button using columns
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    if st.button("🧀 Feed Daily Cheese", key="feed_button", use_container_width=True):
-        feed_rat()
+
+if st.button("🧀 Feed Daily Cheese", key="feed_button", use_container_width=True):
+    feed_rat()
 
 st.markdown("</div>", unsafe_allow_html=True)
 
