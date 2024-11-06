@@ -5,7 +5,7 @@ from plotly.subplots import make_subplots
 import os
 
 # Configure the page
-st.set_page_config(page_title="PT.me Dashboard", layout="wide")
+st.set_page_config(page_title="PT.me Dashboard")
 
 # Custom CSS for styling
 st.markdown("""
@@ -186,6 +186,31 @@ with col2:
     st.progress(0.20, text="20%")
 
 st.markdown("</div>", unsafe_allow_html=True)
+
+st.title("My Goals")
+if 'goals' not in st.session_state:
+    st.session_state.goals = ["Run 5km", "Lose 2kg", "Do 50 pushups"]
+
+
+# Use columns for a more balanced layout
+col1, col2 = st.columns([2, 1])
+
+with col1:
+    for i, goal in enumerate(st.session_state.goals):
+        with st.container():
+            goal_col1, goal_col2 = st.columns([1, 3], vertical_alignment="bottom")  # Adjust ratio for number vs description
+            with goal_col1:
+                st.markdown(f"### Goal {i + 1}")
+            with goal_col2:
+                st.markdown(f"**{goal}**")
+
+with col2:
+    # Add a centered button in the second column
+    st.markdown("<div class='edit-button'>", unsafe_allow_html=True)
+    if st.button("Edit Goals"):
+        st.session_state.page = "edit-goals"
+        st.switch_page("pages/editgoals.py")
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 navbar()
