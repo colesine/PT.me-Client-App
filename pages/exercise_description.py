@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="Exercise", layout="centered")
 
 st.write("# 1 Bench Press (Barbell)")
-st.image("https://media.tenor.com/0hoNLcggDG0AAAAM/bench-press.gif", use_column_width=True)  # Main exercise image
+st.video("assets/2024-11-06 21.49.20.mp4",loop=True, autoplay=True,muted=True)
 st.write("**Targets**: Chest, Triceps")
 
 st.write("### Instructions")
