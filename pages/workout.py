@@ -14,7 +14,7 @@ def workout_card(set_number, exercise_name, target_data, rpe):
         with header_col2:
             st.write(f"### {exercise_name}")
         with header_col3:
-            exercise_info = st.button("### ➔", key=f"{set_number}_button")
+            exercise_info = st.button("### ℹ️", key=f"{set_number}_button")
             if exercise_info:
                 switch_page("exercise_description")
 
