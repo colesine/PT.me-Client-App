@@ -67,7 +67,7 @@ metrics = [
     {"name": "Volume", "value": "12,000 kg", "color": "green", "last_updated": datetime.now() - timedelta(hours=2)},
     {"name": "Steps", "value": "8,456", "color": "green", "last_updated": datetime.now() - timedelta(hours=4)},
     {"name": "1 Rep Max", "value": "100 kg", "color": "yellow", "last_updated": datetime.now() - timedelta(hours=6)},
-    {"name": "Progress Photos", "value": "12 photos", "color": "red", "last_updated": datetime.now() - timedelta(hours=8)},
+    {"name": "Progress Photos", "value": "2 photos", "color": "red", "last_updated": datetime.now() - timedelta(hours=8)},
     {"name": "Body Composition", "value": "18% BF", "color": "red", "last_updated": datetime.now() - timedelta(hours=10)}
 ]
 
@@ -94,5 +94,4 @@ for metric in metrics:
                 switch_page("weight")  # Redirect to "weight" page
             else:
                 pass
-
 navbar()

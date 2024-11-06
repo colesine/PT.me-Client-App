@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Set page config
-st.set_page_config(page_title="Edit Fitness Metrics", layout="wide")
+st.set_page_config(page_title="Edit Fitness Metrics")
 
 # Title
 st.title("Edit Fitness Metrics")
