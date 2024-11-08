@@ -132,11 +132,6 @@ if workout_button:
 st.markdown("<div>", unsafe_allow_html=True)
 st.subheader("Weight Loss Progress")
 
-
-# Add link to goals page
-if st.button("View Goals", key="view_goals_button"):
-    st.switch_page("pages/goals.py")
-
 # Create responsive semicircular gauge for current weight
 fig = make_subplots(rows=1, cols=1, specs=[[{'type': 'indicator'}]])
 
