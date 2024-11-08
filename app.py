@@ -5,7 +5,8 @@ from plotly.subplots import make_subplots
 import os
 
 # Configure the page
-st.set_page_config(page_title="PT.me Dashboard")
+st.set_page_config(page_title="PT.me Dashboard",
+    initial_sidebar_state="collapsed")
 
 # Custom CSS for styling
 st.markdown("""
