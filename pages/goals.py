@@ -1,7 +1,8 @@
 import streamlit as st
 
 # Set page config
-st.set_page_config(page_title="My Goals")
+st.set_page_config(page_title="My Goals",
+    initial_sidebar_state="collapsed")
 
 
 
@@ -16,4 +17,4 @@ for i, goal in enumerate(st.session_state.goals):
 
 # Edit Goals Button
 if st.button("Edit Goals"):
-    st.switch_page("edit-goals.py")s
+    st.switch_page("edit-goals.py")

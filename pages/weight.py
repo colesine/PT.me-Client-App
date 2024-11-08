@@ -6,7 +6,8 @@ import altair as alt
 from navbar import navbar
 
 # Set page config
-st.set_page_config(page_title="Weight Analytics")
+st.set_page_config(page_title="Weight Analytics",
+    initial_sidebar_state="collapsed")
 
 # Predefined weight data by year and month
 WEIGHT_DATA = {

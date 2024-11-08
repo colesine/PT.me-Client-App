@@ -1,7 +1,8 @@
 import streamlit as st
 
 # Set page config
-st.set_page_config(page_title="Edit Fitness Metrics")
+st.set_page_config(page_title="Edit Fitness Metrics",
+    initial_sidebar_state="collapsed")
 
 # Title
 st.title("Edit Fitness Metrics")

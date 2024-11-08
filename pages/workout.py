@@ -2,6 +2,9 @@ import streamlit as st
 from navbar import navbar
 from streamlit_extras.switch_page_button import switch_page
 
+st.set_page_config(page_title="Workout",
+    initial_sidebar_state="collapsed")
+
 # Define a function to create the workout card
 def workout_card(set_number, exercise_name, target_data, rpe):
     # Create a container for the card

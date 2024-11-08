@@ -1,7 +1,8 @@
 import streamlit as st
 
 # Set page config
-st.set_page_config(page_title="Edit Goals")
+st.set_page_config(page_title="Edit Goals",
+    initial_sidebar_state="collapsed")
 
 # Goal options
 goal_options = [

@@ -12,7 +12,8 @@ if 'rat_state' not in st.session_state:
     st.session_state.rat_state = 1
 
 # Configure the page
-st.set_page_config(page_title="PT.me - Jimmy the Gym Rat")
+st.set_page_config(page_title="PT.me - Jimmy the Gym Rat",
+    initial_sidebar_state="collapsed")
 
 # Custom CSS for styling
 st.markdown("""
@@ -77,8 +78,6 @@ def feed_rat():
     # Add animation effect
     with st.spinner('Feeding Jimmy...'):
         time.sleep(0.5)
-
-# Center the button using columns
 
 if st.button("🧀 Feed Daily Cheese", key="feed_button", use_container_width=True):
     feed_rat()

@@ -4,7 +4,8 @@ from navbar import navbar
 from resize_crop import resize_and_crop
 
 # Main content
-st.set_page_config(page_title="Workouts", page_icon="📈")
+st.set_page_config(page_title="Workouts",
+    initial_sidebar_state="collapsed")
 
 def workout_container(image_url, header, subheader, duration, key):
     with st.container(height=280):

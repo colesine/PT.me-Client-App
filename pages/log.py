@@ -2,7 +2,8 @@ import streamlit as st
 import datetime
 
 # Set page config
-st.set_page_config(page_title="Fitness Metrics Dashboard")
+st.set_page_config(page_title="Fitness Metrics Dashboard",
+    initial_sidebar_state="collapsed")
 
 # Add custom CSS
 st.markdown("""
